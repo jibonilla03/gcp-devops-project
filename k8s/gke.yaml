@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpc-devops-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+    app: gpc
+  template:
+    metadata:
+      labels:
+        app: gpc
+    spec: 
+      containers:
+      - name: gpc-devops-gke
+        image: 'gcr.io/kodekloud-gcp-training/test-gcpdevops:latests'
+        ports:
+        - containerPort: 5000
+        env:
+          - name: PORT
+            value: "5000"
